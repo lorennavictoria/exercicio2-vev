@@ -16,11 +16,14 @@ public class VooServiceTest {
 
     // inclui vooService como atributo
     private VooService vs;
+    private UserService us;
 
     @BeforeEach
     void setUp() {
         // inicializa vooService
         this.vs = new VooService();
+        this.us = new UserService();
+
         // adiciona voos
         try {
             vs.criaVoo("Campina Grande", "Recife", "12/02/2024", 200.0, 40, "09:00AM");
@@ -31,6 +34,11 @@ public class VooServiceTest {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        us.criaUser("José Amêncio", "8396544-0988", "12312312312");
+        us.criaUser("Júlia Guerra", "8198765-1234", "88877766643");
+        us.criaUser("Pedro Borges", "8799988-8282", "75675675677");
+        us.criaUser("Maria Sílvia", "2196655-4432", "12345678910");
 
     }
 
@@ -90,5 +98,17 @@ public class VooServiceTest {
 
     @Test
     void testReservaVoo() {
+        ArrayList<Voo> voos = this.vs.pesquisaVoo(null, null, null, 0);
+        User user = this.us.getUserByCpf("12312312312");
+
+        Voo vooReserva = voos.get(1);
+        int lugaresLivresTemp = vooReserva.getLugaresLivres();
+        int passageiros = 2;
+
+        double precoTotal = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
+
+        assertEquals(lugaresLivresTemp - 2, vooReserva.getLugaresLivres());
+        assertTrue(user.getReservas().contains(vooReserva.getId()));
+        assertEquals(precoTotal, passageiros * vooReserva.getPreco());
     }
 }
