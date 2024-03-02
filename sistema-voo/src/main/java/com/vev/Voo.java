@@ -87,4 +87,13 @@ public class Voo {
         return this.origem + "-" + this.destino + "-" + dateString + "-" + this.lugares;
     }
 
+    public String detailedToString() {
+        String finalString = "Origem: " + this.origem + "\n" + "Destino: "
+        + this.destino + "\n" + "Horário: " + this.horario 
+        + "\n" + "Preço: R$" + this.preco + "\n" 
+        + "Lugares Disponíveis: " + this.getLugaresLivres();
+
+        return finalString;
+    }
+
 }

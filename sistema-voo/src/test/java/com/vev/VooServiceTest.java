@@ -75,21 +75,21 @@ public class VooServiceTest {
         String data = "01/06/2024";
         int numPassageiros = 41;
 
-        ArrayList<Voo> origemResultado = this.vs.pesquisaVoo(origem, null, null, 0);
+        ArrayList<Voo> origemResultado = this.vs.pesquisaVoo(origem, "", "", 0);
         ArrayList<String> origemEsperado = new ArrayList<>(
             Arrays.asList("Rio de Janeiro-Recife-10/07/2024-40",
             "Rio de Janeiro-Manaus-18/11/2024-45"));
 
-        ArrayList<Voo> destinoResultado = this.vs.pesquisaVoo(null, destino, null, 0);
+        ArrayList<Voo> destinoResultado = this.vs.pesquisaVoo("", destino, "", 0);
         ArrayList<String> destinoEsperado = new ArrayList<>(
             Arrays.asList("Rio de Janeiro-Recife-10/07/2024-40",
             "Campina Grande-Recife-12/02/2024-40"));
 
-        ArrayList<Voo> dataResultado = this.vs.pesquisaVoo(null, null, data, 0);
+        ArrayList<Voo> dataResultado = this.vs.pesquisaVoo("", "", data, 0);
         ArrayList<String> dataEsperado = new ArrayList<>(
             Arrays.asList("Espírito Santo-Porto Alegre-01/06/2024-50"));
 
-        ArrayList<Voo> numPassageirosResultado = this.vs.pesquisaVoo(null, null, null, numPassageiros);
+        ArrayList<Voo> numPassageirosResultado = this.vs.pesquisaVoo("", "", "", numPassageiros);
         ArrayList<String> numPassageirosEsperado = new ArrayList<>(
             Arrays.asList("Espírito Santo-Porto Alegre-01/06/2024-50",
             "Rio de Janeiro-Manaus-18/11/2024-45"));
@@ -124,7 +124,7 @@ public class VooServiceTest {
 
     @Test
     void testReservaVoo() {
-        ArrayList<Voo> voos = this.vs.pesquisaVoo(null, null, null, 0);
+        ArrayList<Voo> voos = this.vs.pesquisaVoo("", "", "", 0);
         User user = this.us.getUserByCpf("12312312312");
 
         Voo vooReserva = voos.get(1);
@@ -140,7 +140,7 @@ public class VooServiceTest {
 
     @Test
     void testCancelaReserva() {
-        ArrayList<Voo> voos = this.vs.pesquisaVoo(null, null, null, 0);
+        ArrayList<Voo> voos = this.vs.pesquisaVoo("", "", "", 0);
         User user = this.us.getUserByCpf("12312312312");
 
         Voo vooReserva = voos.get(1);

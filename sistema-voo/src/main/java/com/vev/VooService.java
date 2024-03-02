@@ -41,9 +41,9 @@ public class VooService {
         ArrayList<Voo> resultado = new ArrayList<Voo>();
 
         for (Voo voo : this.voos) {
-            if ((origem == null || origem.equals(voo.getOrigem())) &&
-            (destino == null || destino.equals(voo.getDestino())) &&
-            (date == null || date.equals(voo.getDate().toString())) &&
+            if ((origem == "" || origem.equals(voo.getOrigem())) &&
+            (destino == "" || destino.equals(voo.getDestino())) &&
+            (date == "" || date.equals(voo.getDate().toString())) &&
             (lugares == 0 || voo.getLugaresLivres() >= lugares)) {
                 resultado.add(voo);
             }
@@ -56,12 +56,7 @@ public class VooService {
         ArrayList<String> listaDetalhada = new ArrayList<>();
 
         for (Voo voo : this.voos) {
-            String finalString = "Origem: " + voo.getOrigem() + "\n" + "Destino: "
-            + voo.getDestino() + "\n" + "Horário: " + voo.getHorario() 
-            + "\n" + "Preço: R$" + voo.getPreco() + "\n" 
-            + "Lugares Disponíveis: " + voo.getLugaresLivres();
-
-            listaDetalhada.add(finalString);
+            listaDetalhada.add(voo.detailedToString());
         }
 
         return listaDetalhada;
