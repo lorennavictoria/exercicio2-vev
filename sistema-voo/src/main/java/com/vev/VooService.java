@@ -65,4 +65,37 @@ public class VooService {
         return listaDetalhada;
 
     }
+
+    /**
+     * Reserva voo em nome do usuário com CPF fornecido.
+     * 
+     * @param vooId id do voo
+     * @param cpf cpf do usuário
+     * @param passageiros quantidade de passageiros em reserva
+     * @param us UserService para controle de usuário
+     * 
+     * @return preço total se reserva tiver sucesso, 0 caso contrário.
+     */
+    public double reservaVoo(String vooId, String cpf, int passageiros, UserService us) {
+        Voo vooReserva = this.getVooById(vooId);
+
+        if (passageiros < vooReserva.getLugaresLivres()) {
+            vooReserva.addPassageiros(passageiros);
+            us.adicionaReservaByCpf(cpf, vooReserva);
+            double precoTotal = passageiros * vooReserva.getPreco();
+            return precoTotal;
+        }
+
+        return 0;
+    }
+
+    private Voo getVooById(String id) {
+        for (Voo voo : this.voos) {
+            if (id.equals(voo.getId())) {
+                return voo;
+            }
+        } 
+
+        return null;
+    }
 }
