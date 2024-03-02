@@ -43,6 +43,32 @@ public class VooServiceTest {
     }
 
     @Test
+    void testCriaVoo() {
+        String origem = "OrigemTeste";
+        String destino = "DestinoTeste";
+        String data = "02/03/1993";
+        double preco  = 39.4;
+        int lugares = 20;
+        String horario = "03:20PM";
+
+        Voo newVoo;
+
+        try {
+            newVoo = this.vs.criaVoo(origem, destino, data, preco, lugares, horario);
+
+            assertEquals(newVoo.getOrigem(), origem);
+            assertEquals(newVoo.getDestino(), destino);
+            assertEquals(newVoo.getDateString(), data);
+            assertEquals(newVoo.getPreco(), preco);
+            assertEquals(newVoo.getLugaresLivres(), lugares);
+            assertEquals(newVoo.getHorario(), "15:20");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     void testPesquisaVoo() {
         String origem = "Rio de Janeiro";
         String destino = "Recife";
