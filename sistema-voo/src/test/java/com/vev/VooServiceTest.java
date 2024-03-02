@@ -131,10 +131,20 @@ public class VooServiceTest {
         int lugaresLivresTemp = vooReserva.getLugaresLivres();
         int passageiros = 2;
 
-        double precoTotal = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
+        Reserva reserva = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
 
         assertEquals(lugaresLivresTemp - 2, vooReserva.getLugaresLivres());
-        assertTrue(user.getReservas().contains(vooReserva.getId()));
-        assertEquals(precoTotal, passageiros * vooReserva.getPreco());
+        assertEquals(reserva.getPrecoTotal(), passageiros * vooReserva.getPreco());
+    }
+
+    @Test
+    void testCancelaReserva() {
+        ArrayList<Voo> voos = this.vs.pesquisaVoo(null, null, null, 0);
+        User user = this.us.getUserByCpf("12312312312");
+
+        Voo vooReserva = voos.get(1);
+        int passageiros = 2;
+
+        double precoTotal = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
     }
 }
