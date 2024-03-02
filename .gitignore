@@ -7,3 +7,4 @@ sistema-voo/target/maven-status/maven-compiler-plugin/compile/default-compile/cr
 sistema-voo/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 sistema-voo/target/test-classes/com/vev/UserServiceTest.class
 sistema-voo/target/test-classes/com/vev/VooServiceTest.class
+sistema-voo/.vscode
