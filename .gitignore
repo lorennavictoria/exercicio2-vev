@@ -8,3 +8,6 @@ sistema-voo/target/maven-status/maven-compiler-plugin/compile/default-compile/in
 sistema-voo/target/test-classes/com/vev/UserServiceTest.class
 sistema-voo/target/test-classes/com/vev/VooServiceTest.class
 sistema-voo/.vscode
+sistema-voo/target/classes/com/vev/Reserva.class
+sistema-voo/target/classes/com/vev/Util.class
+sistema-voo/target/test-classes/com/vev/VooServiceTest.class
