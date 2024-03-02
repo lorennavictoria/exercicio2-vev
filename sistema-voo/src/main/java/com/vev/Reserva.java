@@ -8,10 +8,13 @@ public class Reserva {
     private int passageiros;
 
     public Reserva(User user, Voo voo, int passageiros) {
+        Util util = new Util();
+
         this.user = user;
         this.voo = voo;
         this.passageiros = passageiros;
         this.precoTotal = voo.getPreco() * passageiros;
+        this.id = util.generateId(6);
     }
 
     public double getPrecoTotal() {

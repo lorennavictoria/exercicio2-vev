@@ -93,6 +93,33 @@ public class VooService {
         return null;
     }
 
+    public void cancelaReserva(String cpf, String reservaId) {
+        Reserva cancelada = null;
+
+        for (Reserva reserva : this.reservas) {
+            if (reserva.getId().equals(reservaId)) {
+                reserva.getVoo().removePassageiros(reserva.getPassageiros());
+                cancelada = reserva;
+            }
+        }
+
+        if (cancelada != null) {
+            this.reservas.remove(cancelada);
+        }
+    }
+
+    public ArrayList<Reserva> getReservas(String cpf) {
+        ArrayList<Reserva> resultados = new ArrayList<Reserva>();
+
+        for (Reserva reserva : this.reservas) {
+            if (reserva.getUser().getCpf().equals(cpf)) {
+                resultados.add(reserva);
+            }
+        }
+
+        return resultados;
+    }
+
     private Voo getVooById(String id) {
         for (Voo voo : this.voos) {
             if (id.equals(voo.getId())) {

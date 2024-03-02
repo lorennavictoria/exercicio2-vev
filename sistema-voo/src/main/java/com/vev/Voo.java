@@ -3,7 +3,6 @@ package com.vev;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.Random;
 
 public class Voo {
 
@@ -17,6 +16,8 @@ public class Voo {
     private String id;
 
     public Voo(String origem, String destino, Date date, double preco, int lugares, LocalTime horario) {
+        Util util = new Util();
+
         this.origem = origem;
         this.destino = destino;
         this.date = date;
@@ -24,7 +25,7 @@ public class Voo {
         this.lugares = lugares;
         this.passageiros = 0;
         this.horario = horario;
-        this.id = generateId(6);
+        this.id = util.generateId(6);
     }
 
     public String getOrigem() {
@@ -73,24 +74,17 @@ public class Voo {
             this.passageiros += newPassgeiros;
         }
     }
+
+    public void removePassageiros(int passageirosRemove) {
+        if (this.passageiros > 0 && passageirosRemove <= this.passageiros) {
+            this.passageiros -= passageirosRemove;
+        }
+    }
     
     public String toString() {
         SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
         String dateString = fmt.format(date);
         return this.origem + "-" + this.destino + "-" + dateString + "-" + this.lugares;
-    }
-
-    private String generateId(int length) {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder sb = new StringBuilder(length);
-        Random random = new Random();
-
-        for (int i = 0; i < length; i++) {
-            int index = random.nextInt(chars.length());
-            sb.append(chars.charAt(index));
-        }
-
-        return sb.toString();
     }
 
 }
