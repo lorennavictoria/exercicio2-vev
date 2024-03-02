@@ -115,8 +115,14 @@ public class VooServiceTest {
     void testListaVoo() {
         ArrayList<String> voosListados = vs.listaVoos();
 
-        String voo1 = "Origem: Campina Grande\nDestino: Recife\nHorário: 09:00\nPreço: R$200.0\nLugares Disponíveis: 40";
-        String voo2 = "Origem: Espírito Santo\nDestino: Porto Alegre\nHorário: 22:00\nPreço: R$320.9\nLugares Disponíveis: 50";
+        ArrayList<Voo> voo1Query = this.vs.pesquisaVoo("Campina Grande", "", "", 0);
+        String voo1Id = voo1Query.get(0).getId();
+
+        ArrayList<Voo> voo2Query = this.vs.pesquisaVoo("Espírito Santo", "", "", 0);
+        String voo2Id = voo2Query.get(0).getId();
+
+        String voo1 = "Origem: Campina Grande\nDestino: Recife\nHorário: 09:00\nPreço: R$200.0\nLugares Disponíveis: 40\nID: " + voo1Id;
+        String voo2 = "Origem: Espírito Santo\nDestino: Porto Alegre\nHorário: 22:00\nPreço: R$320.9\nLugares Disponíveis: 50\nID: " + voo2Id;
 
         assertTrue(voosListados.contains(voo1));
         assertTrue(voosListados.contains(voo2));

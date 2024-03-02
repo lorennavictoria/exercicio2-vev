@@ -91,7 +91,7 @@ public class Voo {
         String finalString = "Origem: " + this.origem + "\n" + "Destino: "
         + this.destino + "\n" + "Horário: " + this.horario 
         + "\n" + "Preço: R$" + this.preco + "\n" 
-        + "Lugares Disponíveis: " + this.getLugaresLivres();
+        + "Lugares Disponíveis: " + this.getLugaresLivres() + "\n" + "ID: " + this.id;
 
         return finalString;
     }
