@@ -1,5 +1,6 @@
 package com.vev;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -62,7 +63,9 @@ public class Voo {
     }
     
     public String toString() {
-        return this.origem + "-" + this.destino + "-" + this.date + "-" + this.lugares;
+        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+        String dateString = fmt.format(date);
+        return this.origem + "-" + this.destino + "-" + dateString + "-" + this.lugares;
     }
 
 }
