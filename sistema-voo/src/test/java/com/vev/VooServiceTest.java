@@ -23,11 +23,11 @@ public class VooServiceTest {
         this.vs = new VooService();
         // adiciona voos
         try {
-            vs.criaVoo("Campina Grande", "Recife", "12/02/2024", 200.0, 40);
-            vs.criaVoo("São Paulo", "Rio de Janeiro", "29/12/2024", 150.5, 30);
-            vs.criaVoo("Rio de Janeiro", "Recife", "10/07/2024", 300.0, 40);
-            vs.criaVoo("Espírito Santo", "Porto Alegre", "01/06/2024", 320.9, 50);
-            vs.criaVoo("Rio de Janeiro", "Manaus", "18/11/2024", 450.0, 45);
+            vs.criaVoo("Campina Grande", "Recife", "12/02/2024", 200.0, 40, "9:00AM");
+            vs.criaVoo("São Paulo", "Rio de Janeiro", "29/12/2024", 150.5, 30, "8:00PM");
+            vs.criaVoo("Rio de Janeiro", "Recife", "10/07/2024", 300.0, 40, "6:30AM");
+            vs.criaVoo("Espírito Santo", "Porto Alegre", "01/06/2024", 320.9, 50, "10:00PM");
+            vs.criaVoo("Rio de Janeiro", "Manaus", "18/11/2024", 450.0, 45, "9:00AM");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -75,5 +75,9 @@ public class VooServiceTest {
         for (Voo voo : numPassageirosResultado) { 
             assertTrue(numPassageirosEsperado.contains(voo.toString()));
         }
+    }
+
+    @Test
+    void testListaVoo() {
     }
 }
