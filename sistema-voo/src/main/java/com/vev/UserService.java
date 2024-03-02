@@ -27,9 +27,4 @@ public class UserService {
 
         return null;
     }
-
-    public void adicionaReservaByCpf(String cpf, Voo voo) {
-        User user = getUserByCpf(cpf);
-        user.adicionaReserva(voo);
-    }
 }

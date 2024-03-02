@@ -10,10 +10,12 @@ import java.util.Date;
 public class VooService {
 
     private ArrayList<Voo> voos;
+    private ArrayList<Reserva> reservas;
     private SimpleDateFormat df;
 
     public VooService() {
         this.voos = new ArrayList<Voo>();
+        this.reservas = new ArrayList<Reserva>();
         this.df = new SimpleDateFormat("dd/MM/yyyy");
     }
 
@@ -76,17 +78,19 @@ public class VooService {
      * 
      * @return preço total se reserva tiver sucesso, 0 caso contrário.
      */
-    public double reservaVoo(String vooId, String cpf, int passageiros, UserService us) {
+    public Reserva reservaVoo(String vooId, String cpf, int passageiros, UserService us) {
         Voo vooReserva = this.getVooById(vooId);
+        User userResrva = us.getUserByCpf(cpf);
 
         if (passageiros < vooReserva.getLugaresLivres()) {
             vooReserva.addPassageiros(passageiros);
-            us.adicionaReservaByCpf(cpf, vooReserva);
-            double precoTotal = passageiros * vooReserva.getPreco();
-            return precoTotal;
+            Reserva newReserva = new Reserva(userResrva, vooReserva, passageiros);
+            this.reservas.add(newReserva);
+
+            return newReserva;
         }
 
-        return 0;
+        return null;
     }
 
     private Voo getVooById(String id) {

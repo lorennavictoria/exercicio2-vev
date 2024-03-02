@@ -1,7 +1,6 @@
 package com.vev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +26,5 @@ public class UserServiceTest {
         assertEquals(user.getNome(), nome);
         assertEquals(user.getTelefone(), telefone);
         assertEquals(user.getCpf(), cpf);
-        assertTrue(user.getReservas().isEmpty());
     }
 }
