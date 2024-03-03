@@ -1,6 +1,7 @@
 package com.vev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.*;
 
@@ -24,8 +25,21 @@ public class GerenciadorTarefasTest {
         Tarefa novaTarefa = new Tarefa("Comprar café", "Pedir por delivery", "12/02/2024", Prioridade.ALTA);
         String novaSaida = gerenciadorTarefas.atualizaTarefa(tarefa, novaTarefa);
 
-        assertEquals(novaSaida, "Tarefa: xxx foi atualizada para yyy");   
+        assertEquals(novaSaida, "Tarefa: " + tarefa.toString() + "foi atualizada para" + novaTarefa.toString());    
     }
+
+    @Test
+    public void deletaTarefaTest() {
+        Tarefa tarefa = new Tarefa("Comprar café", "Passar no mercado e comprar café São Braz", "12/02/2024", Prioridade.ALTA);
+        gerenciadorTarefas.criaTarefa(tarefa);
+
+        assertTrue(gerenciadorTarefas.tarefas.size(), 1);
+
+        String novaSaida = gerenciadorTarefas.deletaTarefa(tarefa);
+
+        assertEquals(novaSaida, "Tarefa" + tarefa.toString() + "foi deletada!");
+        assertTrue(gerenciadorTarefas.tarefas.size(), 0);
+    }    
 
 
 }
