@@ -1,5 +1,6 @@
 package com.vev;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,18 +18,16 @@ public class GerenciadorTarefas {
         this.tarefas.add(tarefa);
 
         if (tarefas.contains(tarefa)){
-            return "Tarefa inserida com sucesso!";
+            return "Tarefa criada com sucesso!";
         }
         return null;
     }
 
     public String atualizaTarefa(Tarefa tarefaAntiga, Tarefa novaTarefa) {
-       for (int i = 0; i < this.tarefas.size(); i++) {
-            if (this.tarefas.get(i) == tarefaAntiga){
-                this.tarefas.remove(i);
-                this.tarefas.add(novaTarefa);
-            }
-       }
+       
+        this.tarefas.remove(tarefaAntiga);
+        this.tarefas.add(novaTarefa);
+
 
        if (this.tarefas.contains(novaTarefa)){
         return "Tarefa: " + tarefaAntiga.toString() + "foi atualizada para" + novaTarefa.toString();
@@ -46,24 +45,13 @@ public class GerenciadorTarefas {
     }
 
     public String listaTarefas(){
-        Comparator<Tarefa> comparadorTarefas = new Comparator<Tarefa>() {
-            @Override
-            public int compare(Tarefa t1, Tarefa t2) {
-                int prioridadeComparison = t2.getprioridade().compareTo(t1.getprioridade());
-                if (prioridadeComparison != 0) {
-                    return prioridadeComparison;
-                }
-                return t1.getDataVencimento().compareTo(t2.getDataVencimento());
-            }
-        };
-
-        Collections.sort(this.tarefas, comparadorTarefas);
-
+        Collections.sort(tarefas, Comparator.comparing(Tarefa::getDataVencimento));
+        Collections.sort(tarefas, Comparator.comparing(Tarefa::getprioridade));
         String saida = "";
         for (Tarefa tarefa : this.tarefas) {
-            saida += tarefa.toString() + "\n";
+            saida += tarefa.toString();
         }
         return saida;
-    }
+    };
 
 }
