@@ -48,21 +48,12 @@ public class GerenciadorTarefasTest {
         gerenciadorTarefas.criaTarefa(tarefa1);
         gerenciadorTarefas.criaTarefa(tarefa2);
 
-        // Ordenada por prioridade
+        // Ordenada por prioridade e data de vencimento
         String tarefas = taskManager.listaTarefas("prioridade");
         String tarefasEsperadas = "Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/12/2023 \n Prioridade: Alta" +
                             "Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: Baixa";
 
         assertEquals(tarefas, tarefasEsperadas);
-        
-        // Ordenada por data de vencimento
-        tarefas = taskManager.listaTarefas("prioridade");
-        tarefasEsperadas = "Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/12/2023 \n Prioridade: Baixa" +
-                            "Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: Alta";
-
-
-        assertEquals(tarefas, tarefasEsperadas);
     }
-
 
 }
