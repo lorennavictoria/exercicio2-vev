@@ -45,5 +45,12 @@ public class Tarefa {
     public Prioridade getprioridade() {
         return this.prioridade;
     }
+
+    public String toString(){
+        return "Título: " + this.titulo 
+            + "\n Descrição: " + this.descricao 
+            + "\n Data de vencimento:" + this.dataVencimento 
+            + "\n Prioridade: " + this.prioridade;
+    }
    
 }
