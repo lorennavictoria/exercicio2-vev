@@ -11,8 +11,7 @@ public class GerenciadorTarefas {
         this.tarefas = new ArrayList<>();
     }
 
-    public String criaTarefa(String titulo, String descricao, String dataVencimento, Prioridade prioridade){
-        Tarefa tarefa = new Tarefa(titulo, descricao, dataVencimento, prioridade);
+    public String criaTarefa(Tarefa tarefa){
         this.tarefas.add(tarefa);
 
         if (tarefas.contains(tarefa)){
@@ -33,6 +32,23 @@ public class GerenciadorTarefas {
         return "Tarefa: " + tarefaAntiga.toString() + "foi atualizada para" + novaTarefa.toString();
        }
        return null;
+    }
+
+    public String deletaTarefa(Tarefa tarefa){
+        this.tarefas.remove(tarefa);
+
+        if (!this.tarefas.contains(tarefa)){
+            return  "Tarefa" + tarefa.toString() + "foi deletada!";
+        }
+        return null;
+    }
+
+    public String listaTarefas(){
+        String saida = "";
+        for (Tarefa tarefa : tarefas) {
+            saida += tarefa.toString() + "\n";
+        }
+        return saida;
     }
 
 }
