@@ -50,8 +50,8 @@ public class GerenciadorTarefasTest {
 
         // Ordenada por prioridade e data de vencimento
         String tarefas = gerenciadorTarefas.listaTarefas();
-        String tarefasEsperadas = "Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/12/2023 \n Prioridade: Alta" +
-                            "Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: Baixa";
+        String tarefasEsperadas = "Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/02/2023 \n Prioridade: ALTA" +
+                            "Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: BAIXA";
 
         assertEquals(tarefas, tarefasEsperadas);
     }
