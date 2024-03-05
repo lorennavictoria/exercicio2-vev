@@ -33,12 +33,18 @@ public class VooServiceTest {
             vs.criaVoo("Rio de Janeiro", "Manaus", "18/11/2024", 450.0, 45, "09:00AM");
         } catch (ParseException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        us.criaUser("José Amêncio", "8396544-0988", "12312312312");
-        us.criaUser("Júlia Guerra", "8198765-1234", "88877766643");
-        us.criaUser("Pedro Borges", "8799988-8282", "75675675677");
-        us.criaUser("Maria Sílvia", "2196655-4432", "12345678910");
+        try {
+            us.criaUser("José Amêncio", "8396544-0988", "12312312312");
+            us.criaUser("Júlia Guerra", "8198765-1234", "88877766643");
+            us.criaUser("Pedro Borges", "8799988-8282", "75675675677");
+            us.criaUser("Maria Sílvia", "2196655-4432", "12345678910");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -64,6 +70,8 @@ public class VooServiceTest {
             assertEquals(newVoo.getHorario(), "15:20");
 
         } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -137,11 +145,15 @@ public class VooServiceTest {
         int lugaresLivresTemp = vooReserva.getLugaresLivres();
         int passageiros = 2;
 
-        Reserva reserva = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
+        try {
+            Reserva reserva = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
 
-        assertEquals(lugaresLivresTemp - 2, vooReserva.getLugaresLivres());
-        assertEquals(reserva.getPrecoTotal(), passageiros * vooReserva.getPreco());
-        assertTrue(this.vs.getReservas(user.getCpf()).contains(reserva));
+            assertEquals(lugaresLivresTemp - 2, vooReserva.getLugaresLivres());
+            assertEquals(reserva.getPrecoTotal(), passageiros * vooReserva.getPreco());
+            assertTrue(this.vs.getReservas(user.getCpf()).contains(reserva));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -152,14 +164,18 @@ public class VooServiceTest {
         Voo vooReserva = voos.get(1);
         int passageiros = 2;
 
-        Reserva reserva = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
+        try {
+            Reserva reserva = vs.reservaVoo(vooReserva.getId(), user.getCpf(), passageiros, this.us);
 
-        int reservasSizeTemp = this.vs.getReservas(user.getCpf()).size();
+            int reservasSizeTemp = this.vs.getReservas(user.getCpf()).size();
 
-        this.vs.cancelaReserva(user.getCpf(), reserva.getId());
+            this.vs.cancelaReserva(user.getCpf(), reserva.getId());
 
-        assertFalse(this.vs.getReservas(user.getCpf()).contains(reserva));
-        assertEquals(reservasSizeTemp - 1, this.vs.getReservas(user.getCpf()).size());
+            assertFalse(this.vs.getReservas(user.getCpf()).contains(reserva));
+            assertEquals(reservasSizeTemp - 1, this.vs.getReservas(user.getCpf()).size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 }

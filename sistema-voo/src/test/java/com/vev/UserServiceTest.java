@@ -19,7 +19,11 @@ public class UserServiceTest {
         String telefone = "82988887777";
         String cpf = "44455566677";
 
-        us.criaUser(nome, telefone, cpf);
+        try {
+            us.criaUser(nome, telefone, cpf);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         User user = this.us.getUserByCpf(cpf);
 

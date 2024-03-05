@@ -19,7 +19,15 @@ public class VooService {
         this.df = new SimpleDateFormat("dd/MM/yyyy");
     }
 
-    public Voo criaVoo(String origem, String destino, String date, double preco, int lugares, String horario) throws ParseException {
+    public Voo criaVoo(String origem, String destino, String date, double preco, int lugares, String horario) throws ParseException, Exception {
+
+        if (origem.isBlank() || destino.isBlank()) {
+            throw new Exception("Origem e destino não podem ser vazios.");
+        }
+
+        if (preco == 0) {
+            throw new Exception("Preço não pode ser 0.");
+        }
 
         Date realDate;
         LocalTime realHorario;
@@ -73,9 +81,17 @@ public class VooService {
      * 
      * @return preço total se reserva tiver sucesso, 0 caso contrário.
      */
-    public Reserva reservaVoo(String vooId, String cpf, int passageiros, UserService us) {
+    public Reserva reservaVoo(String vooId, String cpf, int passageiros, UserService us) throws Exception {
         Voo vooReserva = this.getVooById(vooId);
         User userResrva = us.getUserByCpf(cpf);
+
+        if (vooReserva == null) {
+            throw new Exception("Voo não existe.");
+        }
+
+        if (userResrva == null) {
+            throw new Exception("Usuário não cadastrado.");
+        }
 
         if (passageiros < vooReserva.getLugaresLivres()) {
             vooReserva.addPassageiros(passageiros);

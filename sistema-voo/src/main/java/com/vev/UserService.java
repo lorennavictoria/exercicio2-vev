@@ -10,7 +10,16 @@ public class UserService {
         this.users = new ArrayList<User>();
     }
 
-    public User criaUser(String nome, String telefone, String cpf) {
+    public User criaUser(String nome, String telefone, String cpf) throws Exception {
+
+        if (telefone.length() != 11) {
+            throw new Exception("Telefone deve conter 11 caracteres.");
+        }
+
+        if (cpf.length() != 11) {
+            throw new Exception("CPF deve conter 11 caracteres.");
+        }
+
         User newUser = new User(nome, telefone, cpf);
 
         users.add(newUser);
