@@ -37,4 +37,14 @@ public class Reserva {
         return passageiros;
     }
 
+    public String toString() {
+        String finalString = "VOO RESERVADO:" + "\n\n" + "Origem: " + this.voo.getOrigem() + "\n" + "Destino: "
+        + this.voo.getDestino() + "\n" + "Horário: " + this.voo.getHorario()
+        + "\n" + "Preço: R$" + this.voo.getPreco() + "\n" 
+        + "Lugares Disponíveis: " + this.voo.getLugaresLivres() + "\n\n" + "Passageiros: " 
+        + this.passageiros + "\n" + "TOTAL: R$" + this.precoTotal + "\n" + "Código: " + this.id;
+
+        return finalString;
+    }
+
 }

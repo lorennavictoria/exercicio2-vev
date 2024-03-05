@@ -62,19 +62,15 @@ public class Sistema {
     }
 
     private static String home(Scanner sc) {
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551                 Opções                  \u2551");
-        System.out.println("\u2551                                         \u2551");
-        System.out.println("\u2551  1. Cadastrar-se                        \u2551");
-        System.out.println("\u2551  2. Listar Voos                         \u2551");
-        System.out.println("\u2551  3. Pesquisa Voo                        \u2551");
-        System.out.println("\u2551  4. Reservar Voos                       \u2551");
-        System.out.println("\u2551  5. Cancelar Reserva                    \u2551");
-        System.out.println("\u2551  6. Sair                                \u2551");
-        System.out.println("\u2551                                         \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        String screen = "OPÇÕES:" + "\n\n"
+        + "1. Cadastrar-se" + "\n"
+        + "2. Listar Voos" + "\n"
+        + "3. Pesquisa Voo" + "\n"
+        + "4. Reservar Voo" + "\n"
+        + "5. Cancelar Reserva" + "\n"
+        + "6. Sair" + "\n";
+
+        System.out.println(util.encapsulaString(screen, 50));
         System.out.print("Digite o número de sua opção desejada: ");
 
         String option = sc.next();
@@ -82,12 +78,9 @@ public class Sistema {
     }
 
     private static void cadastroScreen(Scanner sc) {
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551         Digite suas informações         \u2551");
-        System.out.println("\u2551                abaixo                   \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        System.out.println("");
+        String screen = "Digite suas informações abaixo.";
+        System.out.println(util.encapsulaString(screen, 50));
 
         sc.nextLine();
         System.out.print("\nNome: ");
@@ -99,11 +92,9 @@ public class Sistema {
 
         try {
             us.criaUser(nome, telefone, cpf);
-            System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-            "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-            System.out.println("\u2551        Usuário criado com sucesso!      \u2551");
-            System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-            "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+
+            String confirmation = "Usuário criado com sucesso!";
+            System.out.println(util.encapsulaString(confirmation, 50));
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -114,19 +105,17 @@ public class Sistema {
         ArrayList<String> voos = vs.listaVoos();
 
         for (String vooString : voos) {
-            System.out.println(util.encapsulaDetailedToString(vooString));
+            System.out.println(util.encapsulaString(vooString, 50));
         }
 
         System.out.println("\n");
     }
 
     private static void pesquisaScreen(Scanner sc) {
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551        Digite os termos que você quer pesquisar.    \u2551");
-        System.out.println("\u2551 OBS: Deixar em branco significa ignorar o campo.)   \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        System.out.println("");
+        String screen = "Digite os termos que você pesquisar." + "\n"
+        + "(deixar em branco significa ignorar campo)";
+        System.out.println(util.encapsulaString(screen, 50));
 
         sc.nextLine();
         System.out.print("Origem: ");
@@ -152,7 +141,7 @@ public class Sistema {
         } else {
             for (Voo voo : resultado) {
                 String detailedToString = voo.detailedToString();
-                String encapsulada = util.encapsulaDetailedToString(detailedToString);
+                String encapsulada = util.encapsulaString(detailedToString, 42);
                 System.out.println(encapsulada);
             }
         }
@@ -160,13 +149,10 @@ public class Sistema {
     }
 
     private static void reservaScreen(Scanner sc) {
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551        Digite o ID do voo a ser         \u2551");
-        System.out.println("\u2551         reservado, seu CPF e a          \u2551");
-        System.out.println("\u2551    quantidade de passageiros abaixo     \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        System.out.println("");
+        String screen = "Digite o ID do voo a ser reservado," + "\n"
+        + "seu CPF e a quantidade de passageiros:";
+        System.out.println(util.encapsulaString(screen, 50));
 
         sc.nextLine();
         System.out.print("ID: ");
@@ -178,13 +164,10 @@ public class Sistema {
 
         try {
             Reserva reserva = vs.reservaVoo(vooId, cpf, passageiros, us);
-            String vooString = util.encapsulaConfirmacaoReserva(reserva);
+            String vooString = util.encapsulaString(reserva.toString(), 42);
 
-            System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-            "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-            System.out.println("\u2551         Reserva feita com sucesso!      \u2551");
-            System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-            "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+            String confirmation = "Reserva feita com sucesso!";
+            System.out.println(util.encapsulaString(confirmation, 50));
 
             System.out.println(vooString);
         } catch (Exception e) {
@@ -193,13 +176,10 @@ public class Sistema {
     }
 
     private static void cancelaReservaScreen(Scanner sc) {
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551        Digite a seguir o código         \u2551");
-        System.out.println("\u2551       da reserva a ser cancelada        \u2551");
-        System.out.println("\u2551              e seu CPF.                 \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        System.out.println("");
+        String screen = "Digite a seguir o código de reserva" + "\n"
+        + "a ser cancelada e seu CPF.";
+        System.out.println(util.encapsulaString(screen, 50));
 
         sc.nextLine();
         System.out.print("Código da reserva: ");
@@ -209,10 +189,7 @@ public class Sistema {
 
         vs.cancelaReserva(cpf, reservaId);
 
-        System.out.println("\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557");
-        System.out.println("\u2551       Reserva cancelada com sucesso!    \u2551");
-        System.out.println("\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550" +
-        "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d");
+        String confirmation = "Reserva cancelada com sucesso!";
+        System.out.println(util.encapsulaString(confirmation, 50));
     }
 }
