@@ -32,12 +32,12 @@ public class GerenciadorTarefasTest {
         Tarefa tarefa = new Tarefa("Comprar café", "Passar no mercado e comprar café São Braz", "12/02/2024", Prioridade.ALTA);
         gerenciadorTarefas.criaTarefa(tarefa);
 
-        assertEquals(gerenciadorTarefas.tarefas.size(), 1);
+        assertEquals(gerenciadorTarefas.tarefas.contains(tarefa), true);
 
         String novaSaida = gerenciadorTarefas.deletaTarefa(tarefa);
 
         assertEquals(novaSaida, "Tarefa: \n" + tarefa.toString() + "\n foi deletada!");
-        assertEquals(0, gerenciadorTarefas.tarefas.size());
+        assertEquals(gerenciadorTarefas.tarefas.contains(tarefa), false);
     }    
 
     @Test
