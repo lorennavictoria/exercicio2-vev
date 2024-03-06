@@ -72,11 +72,11 @@ public class GerenciadorTarefas {
     public String listaTarefas(){
         Collections.sort(tarefas, new TarefaComparator());
 
-        String saida = "";
+        StringBuilder saida = new StringBuilder();
         for (Tarefa tarefa : this.tarefas) {
-            saida += tarefa.toString();
+            saida.append(tarefa.toString());
         }
-        return saida;
+        return saida.toString();
     };
 
 }
