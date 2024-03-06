@@ -2,7 +2,6 @@ package com.vev;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -71,8 +70,8 @@ public class GerenciadorTarefas {
      * @return Uma string contendo a representação das tarefas ordenadas.
      */
     public String listaTarefas(){
-        Collections.sort(tarefas, Comparator.comparing(Tarefa::getDataVencimento));
-        Collections.sort(tarefas, Comparator.comparing(Tarefa::getprioridade));
+        Collections.sort(tarefas, new TarefaComparator());
+
         String saida = "";
         for (Tarefa tarefa : this.tarefas) {
             saida += tarefa.toString();

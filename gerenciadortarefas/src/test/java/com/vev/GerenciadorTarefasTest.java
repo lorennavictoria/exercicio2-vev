@@ -1,7 +1,6 @@
 package com.vev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.*;
 
@@ -50,8 +49,8 @@ public class GerenciadorTarefasTest {
 
         // Ordenada por prioridade e data de vencimento
         String tarefas = gerenciadorTarefas.listaTarefas();
-        String tarefasEsperadas = "\nTítulo: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/02/2023 \n Prioridade: ALTA" +
-                            "\nTítulo: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: BAIXA";
+        String tarefasEsperadas = "\n Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:2023-02-10 \n Prioridade: ALTA" +
+                            "\n Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:2024-01-08 \n Prioridade: BAIXA";
 
         assertEquals(tarefas, tarefasEsperadas);
     }
