@@ -8,6 +8,12 @@ public class Util {
     public Util() {
     }
     
+    /**
+     * Gera ID alfanumérido de um tamanho específico.
+     * 
+     * @param length tamanho do ID.
+     * @return string ID.
+     */
     public String generateId(int length) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder sb = new StringBuilder(length);
@@ -21,6 +27,13 @@ public class Util {
         return sb.toString();
     }
 
+    /**
+     * Encapsula string em caracteres especiais para formatação.
+     * 
+     * @param str string a ser formatada.
+     * @param fullLength comprimento em caracteres do quadrado resultante.
+     * @return string formatada.
+     */
     public String encapsulaString(String str, int fullLength) {
         String[] lines = new String[1];
 
