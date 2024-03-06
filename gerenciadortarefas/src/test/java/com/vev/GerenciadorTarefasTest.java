@@ -25,7 +25,7 @@ public class GerenciadorTarefasTest {
         Tarefa novaTarefa = new Tarefa("Comprar café", "Pedir por delivery", "12/02/2024", Prioridade.ALTA);
         String novaSaida = gerenciadorTarefas.atualizaTarefa(tarefa, novaTarefa);
 
-        assertEquals(novaSaida, "Tarefa: " + tarefa.toString() + "foi atualizada para" + novaTarefa.toString());    
+        assertEquals(novaSaida, "Tarefa: \n" + tarefa.toString() + "\n Foi atualizada para: \n" + novaTarefa.toString());    
     }
 
     @Test
@@ -37,7 +37,7 @@ public class GerenciadorTarefasTest {
 
         String novaSaida = gerenciadorTarefas.deletaTarefa(tarefa);
 
-        assertEquals(novaSaida, "Tarefa" + tarefa.toString() + "foi deletada!");
+        assertEquals(novaSaida, "Tarefa: \n" + tarefa.toString() + "\n foi deletada!");
         assertEquals(0, gerenciadorTarefas.tarefas.size());
     }    
 
@@ -50,8 +50,8 @@ public class GerenciadorTarefasTest {
 
         // Ordenada por prioridade e data de vencimento
         String tarefas = gerenciadorTarefas.listaTarefas();
-        String tarefasEsperadas = "Título: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/02/2023 \n Prioridade: ALTA" +
-                            "Título: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: BAIXA";
+        String tarefasEsperadas = "\nTítulo: Estudar Java \n Descrição: Preparar para a prova \n Data de vencimento:10/02/2023 \n Prioridade: ALTA" +
+                            "\nTítulo: Fazer exercícios \n Descrição: Treino na academia \n Data de vencimento:08/01/2024 \n Prioridade: BAIXA";
 
         assertEquals(tarefas, tarefasEsperadas);
     }
