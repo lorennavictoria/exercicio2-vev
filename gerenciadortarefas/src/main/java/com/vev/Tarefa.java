@@ -1,5 +1,8 @@
 package com.vev;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * A classe Tarefa representa uma tarefa a ser realizada, contendo informações como título, descrição, data de vencimento e prioridade.
  */
@@ -7,7 +10,7 @@ public class Tarefa {
     
     private String titulo;
     private String descricao;
-    private String dataVencimento;
+    private LocalDate dataVencimento;
     private Prioridade prioridade;
 
     /**
@@ -20,8 +23,13 @@ public class Tarefa {
     public Tarefa(String titulo, String descricao, String dataVencimento, Prioridade prioridade) {
         this.titulo = titulo;
         this.descricao = descricao;
-        this.dataVencimento = dataVencimento;
         this.prioridade = prioridade;
+        this.prioridade = prioridade;
+
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(dataVencimento, format);
+
+        this.dataVencimento = localDate;
     }
 
     /**
@@ -44,7 +52,7 @@ public class Tarefa {
      * Define uma nova data de vencimento para a tarefa.
      * @param novaDataVencimento A nova data de vencimento da tarefa no formato de string.
      */
-    public void setDataVencimento(String novaDataVencimento){
+    public void setDataVencimento(LocalDate novaDataVencimento){
         this.dataVencimento = novaDataVencimento;
     }
 
@@ -76,7 +84,7 @@ public class Tarefa {
      * Obtém a data de vencimento da tarefa.
      * @return A data de vencimento da tarefa no formato de string.
      */
-    public String getDataVencimento() {
+    public LocalDate getDataVencimento() {
         return this.dataVencimento;
     }
 
