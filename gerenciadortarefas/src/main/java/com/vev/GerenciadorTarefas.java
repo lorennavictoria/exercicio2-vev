@@ -45,7 +45,7 @@ public class GerenciadorTarefas {
 
 
        if (this.tarefas.contains(novaTarefa)){
-        return "Tarefa: " + tarefaAntiga.toString() + "foi atualizada para" + novaTarefa.toString();
+        return "Tarefa: \n" + tarefaAntiga.toString() + "\n Foi atualizada para: \n" + novaTarefa.toString();
        }
        return null;
     }
@@ -60,7 +60,7 @@ public class GerenciadorTarefas {
         this.tarefas.remove(tarefa);
 
         if (!this.tarefas.contains(tarefa)){
-            return  "Tarefa" + tarefa.toString() + "foi deletada!";
+            return  "Tarefa: \n" + tarefa.toString() + "\n foi deletada!";
         }
         return null;
     }

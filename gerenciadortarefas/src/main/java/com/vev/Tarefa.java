@@ -93,7 +93,7 @@ public class Tarefa {
      * @return Uma representação em string da tarefa contendo título, descrição, data de vencimento e prioridade.
      */
     public String toString(){
-        return "Título: " + this.titulo 
+        return "\n Título: " + this.titulo 
             + " \n Descrição: " + this.descricao 
             + " \n Data de vencimento:" + this.dataVencimento 
             + " \n Prioridade: " + this.prioridade;
