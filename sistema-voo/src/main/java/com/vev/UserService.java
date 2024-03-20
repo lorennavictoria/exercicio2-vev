@@ -36,4 +36,8 @@ public class UserService {
 
         return null;
     }
+
+    public ArrayList<User> getUsers() {
+        return this.users;
+    }
 }
